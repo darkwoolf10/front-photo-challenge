@@ -1,11 +1,12 @@
 import React from 'react';
 
-interface Card {
-    title: string,
-    authorName: string,
-    executorName: string,
-    description: string,
-    state: boolean
+type Card = {
+    title: string;
+    authorName: string;
+    executorName: string;
+    description: string;
+    state: boolean;
+    photo?: string;
 }
 
 function PhotoCard({...props}: Card) {
