@@ -1,0 +1,15 @@
+.login-page {
+  height: 100%;
+}
+
+.login-form {
+  @include form_center;
+}
+
+.login-form__input {
+  @include default_input;
+}
+
+.login-form__sign_up_link {
+  margin-left: 20px;
+}

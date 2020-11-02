@@ -1,0 +1,11 @@
+.registration-page {
+  height: 100%;
+}
+
+.registration-form {
+  @include form_center;
+}
+
+.registration-form__input {
+  @include default_input;
+}

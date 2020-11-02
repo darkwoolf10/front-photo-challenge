@@ -1,7 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
+  let links;
+
+  // if (isAuth === true) {
+  //   links = <li><Link to='/create-challenge'>Create challenge</Link></li>;
+  // }
+
   return (
     <header className="App-header">
       <nav className="border fixed split-nav">
@@ -12,7 +18,8 @@ function Header() {
           <input id="collapsible1" type="checkbox" name="collapsible1" />
           <div className="collapsible-body">
             <ul className="inline">
-              <li><Link to='/create-challenge'>Create challenge</Link></li>
+              <li><Link to='/login'>Login</Link></li>
+              {links}
             </ul>
           </div>
         </div>
