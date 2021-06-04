@@ -24,8 +24,11 @@ export function Registration() {
       password_confirmation: passwordConfirmation
     }
 
-    axios.post('http://localhost/api/auth/signup', user)
+    axios.get('http://localhost:80/oauth/tokens')
       .then((response: any) => console.log(response));
+
+    // axios.post('http://localhost/api/auth/signup', user)
+    //   .then((response: any) => console.log(response));
   };
 
   return(
