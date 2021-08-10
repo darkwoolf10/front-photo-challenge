@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {useHistory} from "react-router-dom";
+
 
 type CreateUserData = {
   name: string,
@@ -13,6 +15,9 @@ export function Registration() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const redirectUrl = '/home';
+
+  let history = useHistory();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -24,11 +29,11 @@ export function Registration() {
       password_confirmation: passwordConfirmation
     }
 
-    axios.get('http://localhost:80/oauth/tokens')
-      .then((response: any) => console.log(response));
-
-    // axios.post('http://localhost/api/auth/signup', user)
-    //   .then((response: any) => console.log(response));
+    axios.post('http://localhost/api/auth/register', user)
+      .then((response: any) => {
+        localStorage.setItem('access_token', response.data.token_type + ' ' + response.data.access_token);
+        history.push(redirectUrl);
+      });
   };
 
   return(

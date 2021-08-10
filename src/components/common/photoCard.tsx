@@ -1,18 +1,9 @@
 import React, {useState} from 'react';
-
-type Card = {
-    title: string;
-    authorName: string;
-    executorName: string;
-    description: string;
-    state: boolean;
-    photo?: string;
-}
+import {Card} from '../models/types/Card';
 
 function PhotoCard({...props}: Card) {
     const [photoUrl, setPhotoUrl] = useState(props.photo);
 
-    console.log(photoUrl);
     if (photoUrl === undefined) {
         setPhotoUrl("https://unsplash.it/550/250");
     }

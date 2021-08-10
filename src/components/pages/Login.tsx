@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { LoginUserData } from '../../services/types/LoginUserData';
 
-function Login() {
+function Login(this: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [token, setToken] = useState('');
+  const redirectUrl = '/create-challenge';
+
+  let history = useHistory();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -20,48 +22,25 @@ function Login() {
 
     axios.post('http://localhost/api/auth/login', user, {
       headers: {
-        "Accept" : "application/json",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Origin": "*",
-        'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        "Accept" : "application/json"
       }
     })
       .then((response: any) => {
-        console.log(response);
-        setMessage(response.message);
+        localStorage.setItem('access_token', response.data.token_type + ' ' + response.data.access_token);
+        history.push(redirectUrl);
       })
-      // axios.all([
-      //   axios.get('http://localhost/api/check', {
-      //     headers: {
-      //       "Access-Control-Allow-Origin": "*",
-      //       'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE',
-      //       'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-      //     }
-      //   })
-      //     .then(response => {
-      //       console.log("token" + response);
-      //       setToken(response.data);
-      //     }),
-        // axios.get('http://localhost/oauth/tokens', {
-        //     headers: {
-        //         "Access-Control-Allow-Origin": "*",
-        //         'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE',
-        //         'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-        //     }
-        // })
-        // .then(response => {
-        //     console.log("token" + response);
-        //     setToken(response.data);
-        // }),
-    // ])
-  };
+      .catch((error: any) => {
+      setMessage(error.response.data.message);
+    });
+  }
 
   return(
     <div className="login-page">
-      <div className="message ">
-        <span className="badge danger">{ message }</span>
-      </div>
+      { message !== '' ? (
+        <div className="message ">
+          <span className="badge danger">{ message }</span>
+        </div>
+      ): '' }
       <form onSubmit={handleSubmit} className="login-form" action="" method="POST">
         <input className="login-form__input login-form__email"
                type="text"

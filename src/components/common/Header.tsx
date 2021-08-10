@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import Auth from '../common/Auth';
+import Logout from '../common/Logout';
 
 function Header() {
-  let links;
-
-  // if (isAuth === true) {
-  //   links = <li><Link to='/create-challenge'>Create challenge</Link></li>;
-  // }
+  let isAuth = Auth();
 
   return (
     <header className="App-header">
@@ -18,8 +16,10 @@ function Header() {
           <input id="collapsible1" type="checkbox" name="collapsible1" />
           <div className="collapsible-body">
             <ul className="inline">
-              <li><Link to='/login'>Login</Link></li>
-              {links}
+              <li>
+                {isAuth ? <Link to='/create-challenge'>Create challenge</Link> : <Link to='/login'>Login</Link>}
+              </li>
+              <Logout />
             </ul>
           </div>
         </div>

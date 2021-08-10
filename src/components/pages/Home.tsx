@@ -1,21 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PhotoCard from "../common/photoCard";
+import axios from "axios";
 
 function Home() {
-    return(
+  const [challenges, setChallenges] = useState([{
+    id: 0,
+    context: 'test',
+    author: {
+      name: 'test'
+    },
+    executor: {
+      name: 'test'
+    },
+    status: false
+  }]);
+
+  useEffect(() => {
+    axios.get('http://localhost/api/challenge/all',  {
+      headers: {
+        "Accept" : "application/json"
+      }
+    }).then((response: any) => {
+      console.log(response.data);
+      const challenges = response.data;
+      setChallenges(challenges);
+    });
+  }, []);
+
+  return(
         <div className='home-grid'>
-            <PhotoCard title='Just do it!'
-                       authorName='Valery'
-                       executorName='Darkwoolf'
-                       description='lorem lorem lorem lorem ...'
-                       state={true}
+          {challenges.map((challenge) => (
+            <PhotoCard key={challenge.id}
+                       title={challenge.context}
+                       authorName={challenge.author.name}
+                       executorName={challenge.executor.name}
+                       description={challenge.context}
+                       state={challenge.status}
             />
-            <PhotoCard title='title'
-                       authorName='author'
-                       executorName='executor'
-                       description='desc'
-                       state={false}
-            />
+          ))}
         </div>
     );
 }
