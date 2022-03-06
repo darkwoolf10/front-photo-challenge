@@ -1,0 +1,37 @@
+$green: #0cd808;
+$green-glow: #b3ff51;
+$red: red;
+$red-glow: red;
+$glow-1: 0 0 1px;
+$glow-2: 0 0 2px;
+$glow-3: 0 0 6px;
+$glow-4: 0 0 12px;
+
+.card {
+  margin-top: 20px;
+}
+
+@mixin cardState($color) {
+  box-shadow: $glow-1 $color, $glow-2 $color, $glow-3 $color, $glow-4 $color,
+  inset $glow-1 $color, inset $glow-2 $color, inset $glow-3 $color, inset $glow-4 $color;
+}
+
+.card-done {
+  border: 1px solid $green;
+  @include cardState($green-glow);
+}
+
+.card-in-progress {
+  border: 1px solid red;
+  @include cardState($red-glow);
+}
+
+.card-subtitle b {
+  color: #0E9A00;
+}
+
+.image-bottom {
+  max-height: 250px;
+  max-width: 550px;
+  object-fit: cover;
+}

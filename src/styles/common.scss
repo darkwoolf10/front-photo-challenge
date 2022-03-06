@@ -1,0 +1,12 @@
+@mixin form_center {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin default_input {
+  width: 320px;
+  margin-bottom: 30px;
+}

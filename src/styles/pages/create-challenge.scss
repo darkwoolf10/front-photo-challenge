@@ -1,0 +1,10 @@
+.create-challenge .create-challenge__form{
+  display: flex;
+  flex-direction: column;
+
+  .create-challenge__form--input {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 0 20px;
+  }
+}
