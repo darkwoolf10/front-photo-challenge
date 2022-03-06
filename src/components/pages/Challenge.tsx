@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import Headers from "../../services/Headers";
 import {useParams} from "react-router-dom";
 import ChallengeExecuteForm from "../common/ChallengeExecuteForm";
 
