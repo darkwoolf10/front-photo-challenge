@@ -8,7 +8,6 @@ function CreateChallenge() {
   const [users, setUsers] = useState([]);
   const [task, setTask] = useState('');
   const [executor, setExecutor] = useState(0);
-  // const [error, setError] = useState('');
   const homeUrl: string = '/home';
   const headers = Headers();
 
@@ -18,7 +17,7 @@ function CreateChallenge() {
     try {
       event.preventDefault();
 
-      const userId = await axios.get('http://localhost/api/user', {headers: headers})
+      const userId = await axios.get('http://localhost:8080/api/user', {headers: headers})
         .then((response: any) => response.data.id);
 
       const challenge: Challenge = {
@@ -27,7 +26,7 @@ function CreateChallenge() {
         author: userId,
       }
 
-      await axios.post('http://localhost/api/challenge/create',  challenge, {headers: headers});
+      await axios.post('http://localhost:8080/api/challenge/create',  challenge, {headers: headers});
 
       history.push(homeUrl);
     } catch (error) {
@@ -36,10 +35,10 @@ function CreateChallenge() {
   }
 
   useEffect(() => {
-    axios.get('http://localhost/api/users',  {
+    axios.get('http://localhost:8080/api/users',  {
       headers: headers
     }).then((response: any) => {setUsers(response.data)});
-  }, [users]);
+  }, []);
 
   return(
     <div className="create-challenge">

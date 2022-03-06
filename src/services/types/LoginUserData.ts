@@ -1,5 +1,5 @@
 export type LoginUserData = {
-    email: string,
-    password: string,
-    persistent: boolean
+    email: string;
+    password: string;
+    persistent: boolean;
 }

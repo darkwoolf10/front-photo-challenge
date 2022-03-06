@@ -1,8 +1,8 @@
 export type Card = {
-  title: string;
+  id: number;
   authorName: string;
   executorName: string;
   description: string;
   state: boolean;
-  photo?: string;
+  photo_url?: string;
 }

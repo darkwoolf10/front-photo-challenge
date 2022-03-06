@@ -20,6 +20,9 @@ function Header() {
                 {isAuth ? <Link to='/create-challenge'>Create challenge</Link> : <Link to='/login'>Login</Link>}
               </li>
               <Logout />
+              <Link to="/profile">
+                Profile
+              </Link>
             </ul>
           </div>
         </div>

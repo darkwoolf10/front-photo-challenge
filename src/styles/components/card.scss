@@ -25,3 +25,13 @@ $glow-4: 0 0 12px;
   border: 1px solid red;
   @include cardState($red-glow);
 }
+
+.card-subtitle b {
+  color: #0E9A00;
+}
+
+.image-bottom {
+  max-height: 250px;
+  max-width: 550px;
+  object-fit: cover;
+}

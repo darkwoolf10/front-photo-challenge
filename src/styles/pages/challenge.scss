@@ -1,0 +1,16 @@
+.challenge-card {
+  min-height: 500px;
+
+  .challenge-card__image img {
+    max-height: 350px;
+  }
+
+  .challenge-card__image:hover {
+    filter: blur(4px);
+  }
+}
+
+.challenge-card__form {
+  display: flex;
+  flex-direction: row;
+}

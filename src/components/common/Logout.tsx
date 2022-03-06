@@ -5,6 +5,8 @@ function Header() {
   function logout() {
     localStorage.removeItem('access_token');
     console.log('logout');
+
+    // location.reload();
   }
 
   return (

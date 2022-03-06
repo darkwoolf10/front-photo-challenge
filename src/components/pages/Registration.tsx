@@ -29,7 +29,7 @@ export function Registration() {
       password_confirmation: passwordConfirmation
     }
 
-    axios.post('http://localhost/api/auth/register', user)
+    axios.post('http://localhost:8080/api/auth/registration', user)
       .then((response: any) => {
         localStorage.setItem('access_token', response.data.token_type + ' ' + response.data.access_token);
         history.push(redirectUrl);

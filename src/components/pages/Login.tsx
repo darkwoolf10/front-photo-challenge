@@ -20,7 +20,7 @@ function Login(this: any) {
       persistent: true
     }
 
-    axios.post('http://localhost/api/auth/login', user, {
+    axios.post('http://localhost:8080/api/auth/login', user, {
       headers: {
         "Accept" : "application/json"
       }
